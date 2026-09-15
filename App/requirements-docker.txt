@@ -1,0 +1,26 @@
+# Core libraries - RAG Pipeline
+python-dotenv==1.0.1
+pymupdf==1.24.4         
+sentence-transformers==3.0.1
+chromadb==0.5.5
+openai==1.35.10
+tqdm==4.66.4
+
+# Smart Chunking
+langchain-text-splitters==0.2.2
+
+
+# Later stages - API & UI
+fastapi==0.111.1
+uvicorn==0.30.3
+streamlit==1.36.0
+
+reportlab
+
+pandas
+openpyxl
+python-multipart
+python-docx
+python-pptx
+
+httpx==0.27.0

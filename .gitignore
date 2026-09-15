@@ -8,3 +8,4 @@ Data/Processed Data/
 .chroma/
 *.log
 .DS_Store
+Data/Outputs/

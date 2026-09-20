@@ -14,7 +14,7 @@ import chromadb
 from chromadb.config import Settings
 import torch
 
-from src.ingestion.extract_text import extract_text_from_pdf
+from src.ingestion.extract_text import extract_text 
 from src.ingestion.chunk_text import split_text
 
 logging.basicConfig(
@@ -45,7 +45,7 @@ def ingest_file(pdf_path: Path, model: SentenceTransformer = None) -> int:
     logger.info(f"Ingesting: {pdf_path.name}")
 
     # 1. Extract
-    text = extract_text_from_pdf(pdf_path)
+    text = extract_text(pdf_path)
     if not text.strip():
         logger.warning(f"No extractable text found in {pdf_path.name}")
         return 0

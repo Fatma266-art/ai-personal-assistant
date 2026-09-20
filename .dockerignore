@@ -1,0 +1,9 @@
+.env
+.git
+ngrok.exe
+__pycache__/
+*.pyc
+.venv/
+venv/
+Data/Raw Data/
+Data/Outputs/

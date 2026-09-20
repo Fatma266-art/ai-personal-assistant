@@ -9,3 +9,4 @@ Data/Processed Data/
 *.log
 .DS_Store
 Data/Outputs/
+ngrok.exe

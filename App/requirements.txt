@@ -24,3 +24,6 @@ openpyxl
 python-multipart
 python-docx
 python-pptx
+
+arabic-reshaper
+python-bidi

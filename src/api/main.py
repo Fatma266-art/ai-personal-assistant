@@ -4,11 +4,15 @@ import shutil
 
 from fastapi import FastAPI, UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi import HTTPException
+from fastapi.responses import FileResponse
 
 from src.agent.agent import run_agent
 
 
 app = FastAPI(title="AI Assistant API")
+
+from fastapi.middleware.cors import CORSMiddleware
 
 app.add_middleware(
     CORSMiddleware,
@@ -17,6 +21,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 UPLOAD_DIR = Path("/app/Data/Raw Data/Uploads")
 UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -80,3 +85,15 @@ def run_task(
             "message": str(e),
             "output_file": None
         }
+
+
+OUTPUT_DIR = Path("/app/Data/Outputs").resolve()
+
+
+@app.get("/download")
+def download(path: str):
+    file_path = Path(path).resolve()
+    # only allow files inside the Outputs folder
+    if OUTPUT_DIR not in file_path.parents or not file_path.is_file():
+        raise HTTPException(status_code=404, detail="File not found")
+    return FileResponse(file_path, filename=file_path.name)   
